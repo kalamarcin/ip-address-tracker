@@ -10,7 +10,7 @@ const Map = ({ lat, lng }) => {
 
   return (
     <div className="map-container">
-      <MapContainer center={[lat, lng]} zoom={13} scrollWheelZoom={true}>
+      <MapContainer center={[lat, lng]} zoom={13} scrollWheelZoom={false}>
         <MyComponent center={[lat, lng]} />
         <TileLayer
           attribution='<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>'

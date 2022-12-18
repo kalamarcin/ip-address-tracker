@@ -3,10 +3,7 @@ import { useEffect, useRef, useState } from 'react'
 import './App.scss'
 import Map from './Components/Map'
 
-
-
 function App() {
-  
   const searchInput = useRef('')
   const [ipAdress, setIpAdress] = useState()
   const [city, setCity] = useState()
@@ -26,24 +23,22 @@ function App() {
     await axios
       .get(API)
       .then(res => {
-        
-        setIpAdress(res.data.ipIP)
+        setIpAdress(res.data.ip)
         setCity(res.data.location.city)
         setCountry(res.data.location.country)
         setTimezone(res.data.location.timezone)
         setIsp(res.data.isp)
         setLat(res.data.location.lat)
         setLng(res.data.location.lng)
-        
       })
       .catch(err => {
         console.log(err)
       })
   }
 
-  // useEffect(() => {
-  //   fetchData()
-  // }, [])
+  useEffect(() => {
+    fetchData()
+  }, [])
 
   return (
     <div className="App">
@@ -57,20 +52,20 @@ function App() {
         </div>
         <div className="data">
           <h2>IP ADRESS</h2>
-          <p>{ipAdress}ip adress</p>
+          <p>{ipAdress}</p>
           <h2>LOCATION</h2>
           <p>
-            {city}, {country} gdansk
+            {city}, {country} 
           </p>
           <h2>TIMEZONE</h2>
-          <p>UTC {timezone} -10000</p>
+          <p>UTC {timezone}</p>
           <h2>ISP</h2>
-          <p>{isp} firma</p>
+          <p>{isp}</p>
         </div>
       </div>
 
       <div className="map">
-      <Map lat={lat} lng={lng} />
+        <Map lat={lat} lng={lng} />
       </div>
     </div>
   )
