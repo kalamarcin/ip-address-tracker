@@ -3,13 +3,18 @@ import { useEffect, useRef, useState } from 'react'
 import './App.scss'
 import Map from './Components/Map'
 
+
+
 function App() {
+  
   const searchInput = useRef('')
   const [ipAdress, setIpAdress] = useState()
   const [city, setCity] = useState()
   const [country, setCountry] = useState()
   const [timezone, setTimezone] = useState()
   const [isp, setIsp] = useState()
+  const [lat, setLat] = useState('')
+  const [lng, setLng] = useState('')
 
   const handleSearch = () => {
     fetchData()
@@ -21,16 +26,15 @@ function App() {
     await axios
       .get(API)
       .then(res => {
-        const getIP = res.data.ip
-        const getCity = res.data.location.city
-        const getCountry = res.data.location.country
-        const getTimezone = res.data.location.timezone
-        const getIsp = res.data.isp
-        setIpAdress(getIP)
-        setCity(getCity)
-        setCountry(getCountry)
-        setTimezone(getTimezone)
-        setIsp(getIsp)
+        
+        setIpAdress(res.data.ipIP)
+        setCity(res.data.location.city)
+        setCountry(res.data.location.country)
+        setTimezone(res.data.location.timezone)
+        setIsp(res.data.isp)
+        setLat(res.data.location.lat)
+        setLng(res.data.location.lng)
+        
       })
       .catch(err => {
         console.log(err)
@@ -52,22 +56,21 @@ function App() {
           </button>
         </div>
         <div className="data">
-        <h2>IP ADRESS</h2>
-        <p>{ipAdress}ip adress</p>
-        <h2>LOCATION</h2>
-        <p>
-          {city}, {country} gdansk
-        </p>
-        <h2>TIMEZONE</h2>
-        <p>UTC {timezone} -10000</p>
-        <h2>ISP</h2>
-        <p>{isp} firma</p>
-      </div>
+          <h2>IP ADRESS</h2>
+          <p>{ipAdress}ip adress</p>
+          <h2>LOCATION</h2>
+          <p>
+            {city}, {country} gdansk
+          </p>
+          <h2>TIMEZONE</h2>
+          <p>UTC {timezone} -10000</p>
+          <h2>ISP</h2>
+          <p>{isp} firma</p>
+        </div>
       </div>
 
-      
       <div className="map">
-        <Map/>
+      <Map lat={lat} lng={lng} />
       </div>
     </div>
   )
