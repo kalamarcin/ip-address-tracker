@@ -17,11 +17,11 @@ function App() {
   const handleSearch = () => {
     fetchData()
   }
-  const fetchData =  () => {
+  const fetchData = () => {
     const APIKEY = process.env.REACT_APP_UNSPLASH_KEY
     const API = `https://geo.ipify.org/api/v2/country,city?apiKey=${APIKEY}&ipAddress=${searchInput.current.value}`
 
-     axios
+    axios
       .get(API)
       .then(res => {
         setIpAdress(res.data.ip)
@@ -36,7 +36,7 @@ function App() {
         console.log(err)
       })
   }
- 
+
   useEffect(() => {
     fetchData()
   }, [])
@@ -46,32 +46,30 @@ function App() {
       <div className="header">
         <h1>IP Address Tracker</h1>
         <div className="search-bar">
-          <input ref={searchInput} type="text" placeholder='Search for any IP address'/>
+          <input ref={searchInput} type="text" placeholder="Search for any IP address" />
           <button onClick={handleSearch}>
             <i className="fa-sharp fa-solid fa-chevron-right"></i>
           </button>
         </div>
         <div className="data">
           <div className="box">
-          <h2>IP ADRESS</h2>
-          <p>{ipAdress}</p>
+            <h2>IP ADRESS</h2>
+            <p>{ipAdress}</p>
           </div>
           <div className="box">
-          <h2>LOCATION</h2>
-          <p>
-            {city}, {country}
-          </p>
+            <h2>LOCATION</h2>
+            <p>
+              {city}, {country}
+            </p>
           </div>
           <div className="box">
-
-          <h2>TIMEZONE</h2>
-          <p>UTC {timezone}</p>
+            <h2>TIMEZONE</h2>
+            <p>UTC {timezone}</p>
           </div>
           <div className="box">
-          <h2>ISP</h2>
-          <p>{isp}</p>
+            <h2>ISP</h2>
+            <p>{isp}</p>
           </div>
-         
         </div>
       </div>
 
