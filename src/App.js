@@ -46,22 +46,32 @@ function App() {
       <div className="header">
         <h1>IP Address Tracker</h1>
         <div className="search-bar">
-          <input ref={searchInput} type="text" />
+          <input ref={searchInput} type="text" placeholder='Search for any IP address'/>
           <button onClick={handleSearch}>
             <i className="fa-sharp fa-solid fa-chevron-right"></i>
           </button>
         </div>
         <div className="data">
+          <div className="box">
           <h2>IP ADRESS</h2>
           <p>{ipAdress}</p>
+          </div>
+          <div className="box">
           <h2>LOCATION</h2>
           <p>
             {city}, {country}
           </p>
+          </div>
+          <div className="box">
+
           <h2>TIMEZONE</h2>
           <p>UTC {timezone}</p>
+          </div>
+          <div className="box">
           <h2>ISP</h2>
           <p>{isp}</p>
+          </div>
+         
         </div>
       </div>
 
