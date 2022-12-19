@@ -1,5 +1,6 @@
 import axios from 'axios'
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
+
 import './App.scss'
 import Map from './Components/Map'
 
@@ -17,7 +18,7 @@ function App() {
     fetchData()
   }
   const fetchData = async () => {
-    const APIKEY = 'at_f88VGFU4g7b98pdAbvRmqUl7A091A'
+    const APIKEY = process.env.REACT_APP_UNSPLASH_KEY
     const API = `https://geo.ipify.org/api/v2/country,city?apiKey=${APIKEY}&ipAddress=${searchInput.current.value}`
 
     await axios
@@ -35,7 +36,7 @@ function App() {
         console.log(err)
       })
   }
-
+ 
   useEffect(() => {
     fetchData()
   }, [])
@@ -55,7 +56,7 @@ function App() {
           <p>{ipAdress}</p>
           <h2>LOCATION</h2>
           <p>
-            {city}, {country} 
+            {city}, {country}
           </p>
           <h2>TIMEZONE</h2>
           <p>UTC {timezone}</p>
