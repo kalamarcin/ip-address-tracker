@@ -1,4 +1,4 @@
-![](https://github.com/kalamarcin/github-user-search/blob/master/src/assets/design/desktop-preview.jpg?raw=true)
+![](https://github.com/kalamarcin/ip-address-tracker/blob/master/src/assets/design/desktop-preview.jpg?raw=true)
 
 ## Overview
 
